@@ -226,6 +226,9 @@ export default class CitySearch extends React.Component {
                         City Name: {this.state.cityWeather.name}
                     </h1>
                      <h1>
+                         Weather Description: {this.state.cityWeather.weather[0].description}
+                     </h1>
+                     <h1>
                          Current Temperature: {this.state.cityWeather.main.temp}
                      </h1>
                      <h1>
@@ -239,6 +242,11 @@ export default class CitySearch extends React.Component {
                      </h1>
                      <h1>
                          Humidity: {this.state.cityWeather.main.humidity}
+                     </h1>
+                     <h1>
+                         {/*Weather Description: {this.state.cityWeather.weather[0].icon}*/}
+                         Weather Description: <img src={`http://openweathermap.org/img/wn/${this.state.cityWeather.weather[0].icon}@2x.png`}/>
+
                      </h1>
                  </div>
 
