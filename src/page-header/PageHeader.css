@@ -1,5 +1,6 @@
 .top-banner{
-    background-color: lightgrey;
+    background-color: #253041;
+    color: whitesmoke;
     /*margin-right: -20px;*/
     /*margin-left: -20px;*/
     /*margin left/right using negative pixels to make sure that to banner is 100% width. Must be a
@@ -10,7 +11,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: black;
+
     font-family: sans-serif;
     margin-bottom: -25px;
 }
@@ -21,3 +22,5 @@
     justify-content: center;
 
 }
+
+

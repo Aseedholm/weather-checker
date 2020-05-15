@@ -3,5 +3,31 @@
     /*width: 100%;*/
     /*Don't believe hight/width are doing anything. Need to find way to get body to stretch 100%
     TODO*/
-    border: 1px solid green;
+    /*border: 10px solid green;*/
+    background-color: #3E536B;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 18px; /* Prevents the text from appearing off screen to the left.*/
+}
+
+.search-bar-input-temp-unit-div {
+}
+
+.unit-select.custom-select {
+    background-color: lightblue;
+
+}
+
+.search-bar {
+    background-color: lightblue;
+    border: none;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.search-button.btn {
+    background-color: lightblue;
+    border: none;
+
 }

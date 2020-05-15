@@ -1,8 +1,8 @@
 .application-body {
 
   /*min-height: 900px;*/
-  background-color: yellow;
-  border: 1px solid red;
+  background-color: #253041;
+  /*border: 1px solid red;*/
   /*padding-bottom: auto;*/
 /*  padding not being used, commented out min-height to see if I can find a better strategy to get
 background color to fill 100% of page.
