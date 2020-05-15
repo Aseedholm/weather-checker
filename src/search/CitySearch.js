@@ -136,98 +136,107 @@ export default class CitySearch extends React.Component {
                 </select>
                 <br/>
 
-                <input type="text"
-                       placeholder="City Name"
-                       className="city-name-input"
-                    //TODO change setState to use prevState.
-                       onChange={(e) => this.setState({
-                                                          cityName: e.target.value
-                                                      })}
-                       value={this.state.cityName}/>
+                {/*<input type="text"*/}
+                {/*       placeholder="City Name"*/}
+                {/*       className="city-name-input"*/}
+                {/*    //TODO change setState to use prevState.*/}
+                {/*       onChange={(e) => this.setState({*/}
+                {/*                                          cityName: e.target.value*/}
+                {/*                                      })}*/}
+                {/*       value={this.state.cityName}/>*/}
 
-                {/*Found at https://www.freeformatter.com/usa-state-list-html-select.html*/}
-                <select className="state-select"
-                        onChange={(e) => {
-                            this.setState({
-                                stateName: e.target.value
-                                          })
-                        }}
-                        value={this.state.stateName}>
-                    <option value=''></option>
-                    <option value="AL">Alabama</option>
-                    <option value="AK">Alaska</option>
-                    <option value="AZ">Arizona</option>
-                    <option value="AR">Arkansas</option>
-                    <option value="CA">California</option>
-                    <option value="CO">Colorado</option>
-                    <option value="CT">Connecticut</option>
-                    <option value="DE">Delaware</option>
-                    <option value="DC">District Of Columbia</option>
-                    <option value="FL">Florida</option>
-                    <option value="GA">Georgia</option>
-                    <option value="HI">Hawaii</option>
-                    <option value="ID">Idaho</option>
-                    <option value="IL">Illinois</option>
-                    <option value="IN">Indiana</option>
-                    <option value="IA">Iowa</option>
-                    <option value="KS">Kansas</option>
-                    <option value="KY">Kentucky</option>
-                    <option value="LA">Louisiana</option>
-                    <option value="ME">Maine</option>
-                    <option value="MD">Maryland</option>
-                    <option value="MA">Massachusetts</option>
-                    <option value="MI">Michigan</option>
-                    <option value="MN">Minnesota</option>
-                    <option value="MS">Mississippi</option>
-                    <option value="MO">Missouri</option>
-                    <option value="MT">Montana</option>
-                    <option value="NE">Nebraska</option>
-                    <option value="NV">Nevada</option>
-                    <option value="NH">New Hampshire</option>
-                    <option value="NJ">New Jersey</option>
-                    <option value="NM">New Mexico</option>
-                    <option value="NY">New York</option>
-                    <option value="NC">North Carolina</option>
-                    <option value="ND">North Dakota</option>
-                    <option value="OH">Ohio</option>
-                    <option value="OK">Oklahoma</option>
-                    <option value="OR">Oregon</option>
-                    <option value="PA">Pennsylvania</option>
-                    <option value="RI">Rhode Island</option>
-                    <option value="SC">South Carolina</option>
-                    <option value="SD">South Dakota</option>
-                    <option value="TN">Tennessee</option>
-                    <option value="TX">Texas</option>
-                    <option value="UT">Utah</option>
-                    <option value="VT">Vermont</option>
-                    <option value="VA">Virginia</option>
-                    <option value="WA">Washington</option>
-                    <option value="WV">West Virginia</option>
-                    <option value="WI">Wisconsin</option>
-                    <option value="WY">Wyoming</option>
-                </select>
+                {/*/!*Found at https://www.freeformatter.com/usa-state-list-html-select.html*!/*/}
+                {/*<select className="state-select"*/}
+                {/*        onChange={(e) => {*/}
+                {/*            this.setState({*/}
+                {/*                stateName: e.target.value*/}
+                {/*                          })*/}
+                {/*        }}*/}
+                {/*        value={this.state.stateName}>*/}
+                {/*    <option value=''></option>*/}
+                {/*    <option value="AL">Alabama</option>*/}
+                {/*    <option value="AK">Alaska</option>*/}
+                {/*    <option value="AZ">Arizona</option>*/}
+                {/*    <option value="AR">Arkansas</option>*/}
+                {/*    <option value="CA">California</option>*/}
+                {/*    <option value="CO">Colorado</option>*/}
+                {/*    <option value="CT">Connecticut</option>*/}
+                {/*    <option value="DE">Delaware</option>*/}
+                {/*    <option value="DC">District Of Columbia</option>*/}
+                {/*    <option value="FL">Florida</option>*/}
+                {/*    <option value="GA">Georgia</option>*/}
+                {/*    <option value="HI">Hawaii</option>*/}
+                {/*    <option value="ID">Idaho</option>*/}
+                {/*    <option value="IL">Illinois</option>*/}
+                {/*    <option value="IN">Indiana</option>*/}
+                {/*    <option value="IA">Iowa</option>*/}
+                {/*    <option value="KS">Kansas</option>*/}
+                {/*    <option value="KY">Kentucky</option>*/}
+                {/*    <option value="LA">Louisiana</option>*/}
+                {/*    <option value="ME">Maine</option>*/}
+                {/*    <option value="MD">Maryland</option>*/}
+                {/*    <option value="MA">Massachusetts</option>*/}
+                {/*    <option value="MI">Michigan</option>*/}
+                {/*    <option value="MN">Minnesota</option>*/}
+                {/*    <option value="MS">Mississippi</option>*/}
+                {/*    <option value="MO">Missouri</option>*/}
+                {/*    <option value="MT">Montana</option>*/}
+                {/*    <option value="NE">Nebraska</option>*/}
+                {/*    <option value="NV">Nevada</option>*/}
+                {/*    <option value="NH">New Hampshire</option>*/}
+                {/*    <option value="NJ">New Jersey</option>*/}
+                {/*    <option value="NM">New Mexico</option>*/}
+                {/*    <option value="NY">New York</option>*/}
+                {/*    <option value="NC">North Carolina</option>*/}
+                {/*    <option value="ND">North Dakota</option>*/}
+                {/*    <option value="OH">Ohio</option>*/}
+                {/*    <option value="OK">Oklahoma</option>*/}
+                {/*    <option value="OR">Oregon</option>*/}
+                {/*    <option value="PA">Pennsylvania</option>*/}
+                {/*    <option value="RI">Rhode Island</option>*/}
+                {/*    <option value="SC">South Carolina</option>*/}
+                {/*    <option value="SD">South Dakota</option>*/}
+                {/*    <option value="TN">Tennessee</option>*/}
+                {/*    <option value="TX">Texas</option>*/}
+                {/*    <option value="UT">Utah</option>*/}
+                {/*    <option value="VT">Vermont</option>*/}
+                {/*    <option value="VA">Virginia</option>*/}
+                {/*    <option value="WA">Washington</option>*/}
+                {/*    <option value="WV">West Virginia</option>*/}
+                {/*    <option value="WI">Wisconsin</option>*/}
+                {/*    <option value="WY">Wyoming</option>*/}
+                {/*</select>*/}
 
-                <input type="text"
-                       placeholder="Zip Code"
-                       className="zip-code-input"
-                    //TODO change setState to use prevState.
-                       onChange={(e) => this.setState({
-                                                          zipCode: e.target.value
-                                                      })}
-                       value={this.state.zipCode}/>
+                {/*<input type="text"*/}
+                {/*       placeholder="Zip Code"*/}
+                {/*       className="zip-code-input"*/}
+                {/*    //TODO change setState to use prevState.*/}
+                {/*       onChange={(e) => this.setState({*/}
+                {/*                                          zipCode: e.target.value*/}
+                {/*                                      })}*/}
+                {/*       value={this.state.zipCode}/>*/}
 
                 <input type="text"
                        placeholder="City Name, State or Zip Code"
                        className="search-bar input-group"
                     //TODO change setState to use prevState.
                        onChange={(e) => {
+                           //will be used to determine if input is characters or digits.
                            let numberRegex = /^[0-9]+$/;
                            let searchInput = e.target.value;
+                           //remove whitespaces from input
                            searchInput = searchInput.trim();
+                           //separate input according to comma.
                            let splitArray = searchInput.split(",");
                            let cityName = '';
                            let stateName = '';
                            let zipCode = '';
+                           //If splitArray is greater than length 1, then there SHOULD be a city
+                           //name and state.
+                           //if length is 1 and the input value isn't digits, then it SHOULD be a
+                           //city name
+                           //if length is 1 and the input value is digits, then it SHOULD be a zip
+                           //code.
                            if (splitArray.length > 1) {
                                cityName = splitArray[0];
                                stateName = splitArray[1];
@@ -236,9 +245,6 @@ export default class CitySearch extends React.Component {
                            } else if (splitArray.length === 1) {
                                zipCode = splitArray[0];
                            }
-                           console.log("CITY", cityName);
-                           console.log("STATE", stateName);
-                           console.log("ZIP CODE", zipCode);
                         this.setState({
                             totalSearch: e.target.value,
                             cityName: cityName,
@@ -270,16 +276,17 @@ export default class CitySearch extends React.Component {
                          Weather Description: {this.state.cityWeather.weather[0].description}
                      </h1>
                      <h1>
-                         Current Temperature: {this.state.cityWeather.main.temp}
+                         Current Temperature: {this.state.cityWeather.main.temp}&#176;
                      </h1>
                      <h1>
-                         Temperature feels like: {this.state.cityWeather.main.feels_like}
+                         Temperature feels like: {this.state.cityWeather.main.feels_like}&#176;
                      </h1>
                      <h1>
-                         Temperature Max: {this.state.cityWeather.main.temp_max}
+                         Temperature Max: {this.state.cityWeather.main.temp_max}&#176;
+
                      </h1>
                      <h1>
-                         Temperature Min: {this.state.cityWeather.main.temp_min}
+                         Temperature Min: {this.state.cityWeather.main.temp_min}&#176;
                      </h1>
                      <h1>
                          Humidity: {this.state.cityWeather.main.humidity}%
