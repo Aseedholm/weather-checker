@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="84597e55-749c-425d-a0c7-4897829d6a55" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/page-header/PageHeader.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/router/RouterManager.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/search/CitySearch.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/page-header/PageHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/page-header/PageHeader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/RouterManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/RouterManager.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/search/CitySearch.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/CitySearch.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,6 +22,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -31,6 +39,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -58,7 +67,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1589473463627</updated>
-      <workItem from="1589473464953" duration="25034000" />
+      <workItem from="1589473464953" duration="25616000" />
+      <workItem from="1589549682086" duration="4612000" />
     </task>
     <servers />
   </component>
@@ -70,7 +80,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

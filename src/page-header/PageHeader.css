@@ -1,0 +1,23 @@
+.top-banner{
+    background-color: lightgrey;
+    /*margin-right: -20px;*/
+    /*margin-left: -20px;*/
+    /*margin left/right using negative pixels to make sure that to banner is 100% width. Must be a
+    a better way to d this. TODO*/
+}
+
+.title-top-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-family: sans-serif;
+    margin-bottom: -25px;
+}
+
+.message-top-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}

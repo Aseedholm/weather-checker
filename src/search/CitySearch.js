@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import './CitySearch.css'
 
 /**
  * This class represents the search functionality of the Weather Checker web application. It will
@@ -120,7 +121,7 @@ export default class CitySearch extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="city-search-page">
                 <h1>
                     SEARCH PAGE
                 </h1>
@@ -131,8 +132,8 @@ export default class CitySearch extends React.Component {
                                           })
                         }}
                         value={this.state.temperatureUnit}>
-                    <option value="metric">Celsius</option>
-                    <option value="imperial">Fahrenheit</option>
+                    <option value="metric">&#8451;</option>
+                    <option value="imperial">&#8457;</option>
                 </select>
                 <br/>
 
