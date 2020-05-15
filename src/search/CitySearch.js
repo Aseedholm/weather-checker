@@ -27,7 +27,9 @@ export default class CitySearch extends React.Component {
         //Used to identify if something was searched.
         searched: false,
         //Used to determine if user wants temperature in celsius (metric) or fahrenheit (imperial).
-        temperatureUnit: 'imperial'
+        temperatureUnit: 'imperial',
+        //Used for combined search bar.
+        totalSearch: ''
     }
 
 
@@ -36,7 +38,25 @@ export default class CitySearch extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevState.temperatureUnit !== this.state.temperatureUnit) {
+            this.search();
+        }
 
+    }
+
+    /**
+     * This function will search for a city based on the variables in the state.
+     */
+    search = () => {
+        if(this.state.zipCode !== '') {
+            this.findCityByZipCode(this.state.zipCode)
+        } else if (this.state.cityName !== '' && this.state.stateName !== '') {
+            this.findCityByNameAndState(this.state.cityName, this.state.stateName)
+        } else if (this.state.cityName !== '' && this.state.stateName === '') {
+            this.findCityByName(this.state.cityName)
+        } else {
+            alert("You need to provide either a city name, city name and state name, or a zip code to search for weather results.")
+        }
     }
 
     /**
@@ -50,11 +70,11 @@ export default class CitySearch extends React.Component {
     findCityByName = (cityName) => {
         fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${this.state.apiKey}&units=${this.state.temperatureUnit}`)
             .then(response => response.json())
-            // .then(results => this.setState({
-            //                                    //TODO: change state using prevState.
-            //                                    cityWeather: results
-            //                                }))
-            .then(resultsTwo => console.log(resultsTwo))
+            .then(results => this.setState({
+                                               //TODO: change state using prevState.
+                                               cityWeather: results
+                                           }))
+            // .then(resultsTwo => console.log(resultsTwo))
 
     }
 
@@ -71,11 +91,11 @@ export default class CitySearch extends React.Component {
         //Need to specify country ID otherwise it may not find a result in the United States.
         fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName},${stateName},US&appid=${this.state.apiKey}&units=${this.state.temperatureUnit}`)
             .then(response => response.json())
-            // .then(results => this.setState({
-            //                                    //TODO: change state using prevState.
-            //                                    cityWeather: results
-            //                                }))
-            .then(resultsTwo => console.log(resultsTwo))
+            .then(results => this.setState({
+                                               //TODO: change state using prevState.
+                                               cityWeather: results
+                                           }))
+            // .then(resultsTwo => console.log(resultsTwo))
     }
 
     /**
@@ -124,13 +144,6 @@ export default class CitySearch extends React.Component {
                                                           cityName: e.target.value
                                                       })}
                        value={this.state.cityName}/>
-                {/*<button onClick={ () => {*/}
-                {/*    this.findCityByName(this.state.cityName)*/}
-                {/*    console.log(this.state.cityName)*/}
-                {/*}}>*/}
-                {/*    TESTING BUTTON CITY NAME*/}
-                {/*</button>*/}
-                {/*<br/>*/}
 
                 {/*Found at https://www.freeformatter.com/usa-state-list-html-select.html*/}
                 <select className="state-select"
@@ -140,6 +153,7 @@ export default class CitySearch extends React.Component {
                                           })
                         }}
                         value={this.state.stateName}>
+                    <option value=''></option>
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
                     <option value="AZ">Arizona</option>
@@ -192,13 +206,7 @@ export default class CitySearch extends React.Component {
                     <option value="WI">Wisconsin</option>
                     <option value="WY">Wyoming</option>
                 </select>
-                {/*<button onClick={ () => {*/}
-                {/*    this.findCityByNameAndState(this.state.cityName, this.state.stateName)*/}
-                {/*    console.log("CITY", this.state.cityName, "---------- STATE", this.state.stateName)*/}
-                {/*}}>*/}
-                {/*    TESTING BUTTON CITY + STATE*/}
-                {/*</button>*/}
-                {/*<br/>*/}
+
                 <input type="text"
                        placeholder="Zip Code"
                        className="zip-code-input"
@@ -208,22 +216,55 @@ export default class CitySearch extends React.Component {
                                                       })}
                        value={this.state.zipCode}/>
 
+                <input type="text"
+                       placeholder="City Name, State or Zip Code"
+                       className="search-bar input-group"
+                    //TODO change setState to use prevState.
+                       onChange={(e) => {
+                           let numberRegex = /^[0-9]+$/;
+                           let searchInput = e.target.value;
+                           searchInput = searchInput.trim();
+                           let splitArray = searchInput.split(",");
+                           let cityName = '';
+                           let stateName = '';
+                           let zipCode = '';
+                           if (splitArray.length > 1) {
+                               cityName = splitArray[0];
+                               stateName = splitArray[1];
+                           } else if (splitArray.length === 1 && !splitArray[0].match(numberRegex)) {
+                               cityName = splitArray[0];
+                           } else if (splitArray.length === 1) {
+                               zipCode = splitArray[0];
+                           }
+                           console.log("CITY", cityName);
+                           console.log("STATE", stateName);
+                           console.log("ZIP CODE", zipCode);
+                        this.setState({
+                            totalSearch: e.target.value,
+                            cityName: cityName,
+                            stateName: stateName,
+                            zipCode: zipCode
+                                      })
+                       }}
+                       value={this.state.totalSearch}/>
+                <br/>
+
                 <button onClick={ () => {
-                    this.findCityByZipCode(this.state.zipCode)
-                    // console.log(this.state.zipCode)
-                    console.log(this.state.cityWeather)
+                    this.search();
                     this.setState({
                         searched: true
                                   })
                 }}>
-                    TESTING BUTTON ZIPCODE
+                    Search
                 </button>
                 <br/>
+
 
                 {this.state.searched && this.state.cityWeather && this.state.cityWeather.main &&
                  <div>
                     <h1>
                         City Name: {this.state.cityWeather.name}
+
                     </h1>
                      <h1>
                          Weather Description: {this.state.cityWeather.weather[0].description}
@@ -241,12 +282,10 @@ export default class CitySearch extends React.Component {
                          Temperature Min: {this.state.cityWeather.main.temp_min}
                      </h1>
                      <h1>
-                         Humidity: {this.state.cityWeather.main.humidity}
+                         Humidity: {this.state.cityWeather.main.humidity}%
                      </h1>
                      <h1>
-                         {/*Weather Description: {this.state.cityWeather.weather[0].icon}*/}
                          Weather Description: <img src={`http://openweathermap.org/img/wn/${this.state.cityWeather.weather[0].icon}@2x.png`}/>
-
                      </h1>
                  </div>
 
