@@ -18,7 +18,7 @@ export default class CitySearch extends React.Component {
         //Search field works by itself, cannot guarantee correct city.
         cityName: '',
         //Search field only works in conjunction with city.
-        stateName: ' ',
+        stateName: '',
         //Search field works by itself
         zipCode: '',
         //API key required by API for calls.
@@ -40,7 +40,14 @@ export default class CitySearch extends React.Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevState.temperatureUnit !== this.state.temperatureUnit) {
-            this.search();
+            //Checking if zipCode or cityName aren't the default value of '', if they are we don't
+            //try to update search. If either of them are filled, then we can attempt search.
+            //This allows user to switch between C or F without having an error message pop up for
+            //an empty search.
+            if (this.state.zipCode !== '' || this.state.cityName !== '' ){
+                this.search();
+            }
+
         }
 
     }
@@ -50,11 +57,11 @@ export default class CitySearch extends React.Component {
      */
     search = () => {
         if(this.state.zipCode !== '') {
-            this.findCityByZipCode(this.state.zipCode)
+            this.findCityByZipCode(this.state.zipCode);
         } else if (this.state.cityName !== '' && this.state.stateName !== '') {
-            this.findCityByNameAndState(this.state.cityName, this.state.stateName)
+            this.findCityByNameAndState(this.state.cityName, this.state.stateName);
         } else if (this.state.cityName !== '' && this.state.stateName === '') {
-            this.findCityByName(this.state.cityName)
+            this.findCityByName(this.state.cityName);
         } else {
             alert("You need to provide either a city name, city name and state name, or a zip code to search for weather results.")
         }
@@ -121,161 +128,95 @@ export default class CitySearch extends React.Component {
 
     render() {
         return (
-            <div className="city-search-page">
-                <h1>
-                    SEARCH PAGE
-                </h1>
-                <select className="state-select"
-                        onChange={(e) => {
+            <div className="city-search-page row">
+
+                <div className="search-bar-input-temp-unit-div row"> {/*div containing the temperature unit / search bar /search button*/}
+                    <select className="unit-select custom-select col-sm-2 col-2"
+                            onChange={(e) => {
+                                this.setState({
+                                                  temperatureUnit: e.target.value
+                                              })
+                            }}
+                            value={this.state.temperatureUnit}>
+                        <option value="metric">&#8451;</option>
+                        <option value="imperial">&#8457;</option>
+                    </select>
+                    <br/>
+
+                    <input type="text"
+                           placeholder="City Name, State or Zip Code"
+                           className="search-bar input-group col-sm-6 col-6"
+                        //TODO change setState to use prevState.
+                           onChange={(e) => {
+                               //will be used to determine if input is characters or digits.
+                               let numberRegex = /^[0-9]+$/;
+                               let searchInput = e.target.value;
+                               //remove whitespaces from input
+                               searchInput = searchInput.trim();
+                               //separate input according to comma.
+                               let splitArray = searchInput.split(",");
+                               let cityName = '';
+                               let stateName = '';
+                               let zipCode = '';
+                               //If splitArray is greater than length 1, then there SHOULD be a city
+                               //name and state.
+                               //if length is 1 and the input value isn't digits, then it SHOULD be a
+                               //city name
+                               //if length is 1 and the input value is digits, then it SHOULD be a zip
+                               //code.
+                               if (splitArray.length > 1) {
+                                   cityName = splitArray[0];
+                                   stateName = splitArray[1];
+                               } else if (splitArray.length === 1 && !splitArray[0].match(numberRegex)) {
+                                   cityName = splitArray[0];
+                               } else if (splitArray.length === 1) {
+                                   zipCode = splitArray[0];
+                               }
                             this.setState({
-                                              temperatureUnit: e.target.value
+                                totalSearch: e.target.value,
+                                cityName: cityName,
+                                stateName: stateName,
+                                zipCode: zipCode
                                           })
-                        }}
-                        value={this.state.temperatureUnit}>
-                    <option value="metric">&#8451;</option>
-                    <option value="imperial">&#8457;</option>
-                </select>
-                <br/>
+                           }}
+                           value={this.state.totalSearch}/>
+                    <br/>
 
-                {/*<input type="text"*/}
-                {/*       placeholder="City Name"*/}
-                {/*       className="city-name-input"*/}
-                {/*    //TODO change setState to use prevState.*/}
-                {/*       onChange={(e) => this.setState({*/}
-                {/*                                          cityName: e.target.value*/}
-                {/*                                      })}*/}
-                {/*       value={this.state.cityName}/>*/}
-
-                {/*/!*Found at https://www.freeformatter.com/usa-state-list-html-select.html*!/*/}
-                {/*<select className="state-select"*/}
-                {/*        onChange={(e) => {*/}
-                {/*            this.setState({*/}
-                {/*                stateName: e.target.value*/}
-                {/*                          })*/}
-                {/*        }}*/}
-                {/*        value={this.state.stateName}>*/}
-                {/*    <option value=''></option>*/}
-                {/*    <option value="AL">Alabama</option>*/}
-                {/*    <option value="AK">Alaska</option>*/}
-                {/*    <option value="AZ">Arizona</option>*/}
-                {/*    <option value="AR">Arkansas</option>*/}
-                {/*    <option value="CA">California</option>*/}
-                {/*    <option value="CO">Colorado</option>*/}
-                {/*    <option value="CT">Connecticut</option>*/}
-                {/*    <option value="DE">Delaware</option>*/}
-                {/*    <option value="DC">District Of Columbia</option>*/}
-                {/*    <option value="FL">Florida</option>*/}
-                {/*    <option value="GA">Georgia</option>*/}
-                {/*    <option value="HI">Hawaii</option>*/}
-                {/*    <option value="ID">Idaho</option>*/}
-                {/*    <option value="IL">Illinois</option>*/}
-                {/*    <option value="IN">Indiana</option>*/}
-                {/*    <option value="IA">Iowa</option>*/}
-                {/*    <option value="KS">Kansas</option>*/}
-                {/*    <option value="KY">Kentucky</option>*/}
-                {/*    <option value="LA">Louisiana</option>*/}
-                {/*    <option value="ME">Maine</option>*/}
-                {/*    <option value="MD">Maryland</option>*/}
-                {/*    <option value="MA">Massachusetts</option>*/}
-                {/*    <option value="MI">Michigan</option>*/}
-                {/*    <option value="MN">Minnesota</option>*/}
-                {/*    <option value="MS">Mississippi</option>*/}
-                {/*    <option value="MO">Missouri</option>*/}
-                {/*    <option value="MT">Montana</option>*/}
-                {/*    <option value="NE">Nebraska</option>*/}
-                {/*    <option value="NV">Nevada</option>*/}
-                {/*    <option value="NH">New Hampshire</option>*/}
-                {/*    <option value="NJ">New Jersey</option>*/}
-                {/*    <option value="NM">New Mexico</option>*/}
-                {/*    <option value="NY">New York</option>*/}
-                {/*    <option value="NC">North Carolina</option>*/}
-                {/*    <option value="ND">North Dakota</option>*/}
-                {/*    <option value="OH">Ohio</option>*/}
-                {/*    <option value="OK">Oklahoma</option>*/}
-                {/*    <option value="OR">Oregon</option>*/}
-                {/*    <option value="PA">Pennsylvania</option>*/}
-                {/*    <option value="RI">Rhode Island</option>*/}
-                {/*    <option value="SC">South Carolina</option>*/}
-                {/*    <option value="SD">South Dakota</option>*/}
-                {/*    <option value="TN">Tennessee</option>*/}
-                {/*    <option value="TX">Texas</option>*/}
-                {/*    <option value="UT">Utah</option>*/}
-                {/*    <option value="VT">Vermont</option>*/}
-                {/*    <option value="VA">Virginia</option>*/}
-                {/*    <option value="WA">Washington</option>*/}
-                {/*    <option value="WV">West Virginia</option>*/}
-                {/*    <option value="WI">Wisconsin</option>*/}
-                {/*    <option value="WY">Wyoming</option>*/}
-                {/*</select>*/}
-
-                {/*<input type="text"*/}
-                {/*       placeholder="Zip Code"*/}
-                {/*       className="zip-code-input"*/}
-                {/*    //TODO change setState to use prevState.*/}
-                {/*       onChange={(e) => this.setState({*/}
-                {/*                                          zipCode: e.target.value*/}
-                {/*                                      })}*/}
-                {/*       value={this.state.zipCode}/>*/}
-
-                <input type="text"
-                       placeholder="City Name, State or Zip Code"
-                       className="search-bar input-group"
-                    //TODO change setState to use prevState.
-                       onChange={(e) => {
-                           //will be used to determine if input is characters or digits.
-                           let numberRegex = /^[0-9]+$/;
-                           let searchInput = e.target.value;
-                           //remove whitespaces from input
-                           searchInput = searchInput.trim();
-                           //separate input according to comma.
-                           let splitArray = searchInput.split(",");
-                           let cityName = '';
-                           let stateName = '';
-                           let zipCode = '';
-                           //If splitArray is greater than length 1, then there SHOULD be a city
-                           //name and state.
-                           //if length is 1 and the input value isn't digits, then it SHOULD be a
-                           //city name
-                           //if length is 1 and the input value is digits, then it SHOULD be a zip
-                           //code.
-                           if (splitArray.length > 1) {
-                               cityName = splitArray[0];
-                               stateName = splitArray[1];
-                           } else if (splitArray.length === 1 && !splitArray[0].match(numberRegex)) {
-                               cityName = splitArray[0];
-                           } else if (splitArray.length === 1) {
-                               zipCode = splitArray[0];
-                           }
+                    <button
+                        className="col-sm-3 col-3 search-button btn"
+                        onClick={ () => {
+                        this.search();
                         this.setState({
-                            totalSearch: e.target.value,
-                            cityName: cityName,
-                            stateName: stateName,
-                            zipCode: zipCode
+                            searched: true
                                       })
-                       }}
-                       value={this.state.totalSearch}/>
-                <br/>
+                    }}>
+                        Search
+                    </button>
+                    <br/>
+                </div> {/*div containing the temperature unit / search bar /search button*/}
 
-                <button onClick={ () => {
-                    this.search();
-                    this.setState({
-                        searched: true
-                                  })
-                }}>
-                    Search
-                </button>
-                <br/>
-
+                {this.state.cityWeather.message && this.state.searched &&
+                 <div>
+                     {alert(this.state.cityWeather.message)}
+                     {/*Reset cityWeather after providing the alert. Otherwise alert gets called
+                     whenever search bar is modified until a valid search parameter is given. */}
+                     {this.setState({
+                         cityWeather: {}
+                                    })}
+                 </div>
+                }
 
                 {this.state.searched && this.state.cityWeather && this.state.cityWeather.main &&
-                 <div>
+                 <div className="row">
                     <h1>
                         City Name: {this.state.cityWeather.name}
 
                     </h1>
+                     <br/>
                      <h1>
                          Weather Description: {this.state.cityWeather.weather[0].description}
                      </h1>
+                     <br/>
                      <h1>
                          Current Temperature: {this.state.cityWeather.main.temp}&#176;
                      </h1>
