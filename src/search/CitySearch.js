@@ -52,6 +52,19 @@ export default class CitySearch extends React.Component {
 
     }
 
+    // getLocation = () => {
+    //     if (navigator.geolocation) {
+    //         navigator.geolocation.getCurrentPosition(showPosition);
+    //     } else {
+    //         alert("Geolocation is not supported by this browser.");
+    //     }
+    // }
+    //
+    // showPosition = (position) => {
+    //     let userLatitude = position.coords.latitude;
+    //     let userLongitude = position.coords.longitude;
+    // }
+
     /**
      * This function will search for a city based on the variables in the state.
      */
@@ -207,35 +220,56 @@ export default class CitySearch extends React.Component {
                 }
 
                 {this.state.searched && this.state.cityWeather && this.state.cityWeather.main &&
-                 <div className="row">
-                    <h1>
-                        City Name: {this.state.cityWeather.name}
+                 <div className="row city-weather-info">
+                     <div className="col-12 city-weather-name city-weather">
+                        <h1>
+                            City Name: {this.state.cityWeather.name}
 
-                    </h1>
-                     <br/>
-                     <h1>
-                         Weather Description: {this.state.cityWeather.weather[0].description}
-                     </h1>
-                     <br/>
-                     <h1>
-                         Current Temperature: {this.state.cityWeather.main.temp}&#176;
-                     </h1>
-                     <h1>
-                         Temperature feels like: {this.state.cityWeather.main.feels_like}&#176;
-                     </h1>
-                     <h1>
-                         Temperature Max: {this.state.cityWeather.main.temp_max}&#176;
+                        </h1>
+                     </div>
 
-                     </h1>
-                     <h1>
-                         Temperature Min: {this.state.cityWeather.main.temp_min}&#176;
-                     </h1>
-                     <h1>
-                         Humidity: {this.state.cityWeather.main.humidity}%
-                     </h1>
-                     <h1>
-                         Weather Description: <img src={`http://openweathermap.org/img/wn/${this.state.cityWeather.weather[0].icon}@2x.png`}/>
-                     </h1>
+                     <div className="col-12 city-weather-description city-weather">
+                         <h1>
+                             Weather Description: {this.state.cityWeather.weather[0].description}
+                         </h1>
+
+                     </div>
+
+                     <div className="col-12 city-weather-current-temperature city-weather">
+
+                         <h1>
+                             Current Temperature: {this.state.cityWeather.main.temp}&#176;
+                         </h1>
+                     </div>
+
+                     <div className="col-12 city-weather-feels-temperature city-weather">
+                         <h1>
+                             Temperature feels like: {this.state.cityWeather.main.feels_like}&#176;
+                         </h1>
+                     </div>
+                     <div className="col-12 city-weather-temperature-max city-weather">
+                         <h1>
+                             Temperature Max: {this.state.cityWeather.main.temp_max}&#176;
+
+                         </h1>
+                     </div>
+
+                     <div className="col-12 city-weather-temperature-min city-weather">
+                         <h1>
+                             Temperature Min: {this.state.cityWeather.main.temp_min}&#176;
+                         </h1>
+                     </div>
+                     <div className="col-12 city-weather city-weather-humidity">
+                         <h1>
+                             Humidity: {this.state.cityWeather.main.humidity}%
+                         </h1>
+                     </div>
+                     <div className="col-12 city-weather city-weather-description-icon">
+                         <h1>
+                             {/*TODO find an alternative image*/}
+                             Weather Description: <img src={`http://openweathermap.org/img/wn/${this.state.cityWeather.weather[0].icon}@2x.png`}/>
+                         </h1>
+                     </div>
                  </div>
 
                 }

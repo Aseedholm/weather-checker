@@ -8,10 +8,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-left: 18px; /* Prevents the text from appearing off screen to the left.*/
+    /*padding-left: 18px; !* Prevents the text from appearing off screen to the left.*!*/
 }
 
-.search-bar-input-temp-unit-div {
+.search-bar-input-temp-unit-div.row {
+    width: 100%;
+    justify-content: center;
+    font-family: sans-serif;
 }
 
 .unit-select.custom-select {
@@ -31,3 +34,57 @@
     border: none;
 
 }
+
+.city-weather-info.row {
+    background-color: white;
+
+}
+
+.city-weather {
+    display: flex;
+    justify-content: center;
+    font-family: sans-serif;
+}
+
+.city-weather-name {
+    /*background-color: #3E536B;*/
+}
+
+.city-weather-description.col-12 {
+    background-color: #3E536B;
+}
+
+.city-weather-current-temperature {
+    /*background-color: #3E536B;*/
+
+}
+
+.city-weather-feels-temperature {
+    background-color: #3E536B;
+}
+
+.city-weather-temperature-max {
+    /*background-color: #3E536B;*/
+
+}
+
+.city-weather-temperature-min {
+    background-color: #3E536B;
+
+}
+
+.city-weather-humidity {
+    /*background-color: #3E536B;*/
+
+}
+
+.city-weather-description-icon {
+    /*margin-top: -15px;*/
+    background-color: #3E536B;
+    margin-top: -10px;
+    margin-bottom: -20px;
+}
+
+
+
+
