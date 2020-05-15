@@ -1,0 +1,7 @@
+.city-search-page {
+    /*height: 100%;*/
+    /*width: 100%;*/
+    /*Don't believe hight/width are doing anything. Need to find way to get body to stretch 100%
+    TODO*/
+    border: 1px solid green;
+}

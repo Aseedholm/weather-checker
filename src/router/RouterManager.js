@@ -1,6 +1,8 @@
 import React from "react";
 import {BrowserRouter, Route, Link} from "react-router-dom";
 import CitySearch from "../search/CitySearch";
+import PageHeader from "../page-header/PageHeader";
+import './RouterManager.css'
 /**
 * This class represents the navigation for the Weather Checker web application. The navigation uses
 * React-Router-Dom and will route to the City search page and the Weather details page.
@@ -8,10 +10,8 @@ import CitySearch from "../search/CitySearch";
 export default class RouterManager extends React.Component {
     render() {
         return (
-            <div>
-                <h1>
-                    BANNER FOR ALL PAGES
-                </h1>
+            <div className="router-body">
+                <PageHeader/>
                 <BrowserRouter>
                     <Route
                         path="/"
