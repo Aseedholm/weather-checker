@@ -12,8 +12,7 @@ const apiKey = 'fb71a69f93b29d7c3ad5ca6d0270914b';
 export const findCityByName = (cityName, temperatureUnit) => {
     return fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=${temperatureUnit}`)
         .then(response => response.json())
-
-}
+};
 
 /**
  * This function calls the fetch function contained in the weatherServices class based on the
@@ -29,7 +28,7 @@ export const findCityByNameAndState = (cityName, stateName, temperatureUnit) => 
     //Need to specify country ID otherwise it may not find a result in the United States.
     return fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName},${stateName},US&appid=${apiKey}&units=${temperatureUnit}`)
         .then(response => response.json())
-}
+};
 
 /**
  * This function calls the fetch function contained in the weatherServices class based on the
@@ -45,10 +44,26 @@ export const findCityByZipCode = (zipCode, temperatureUnit) => {
     //Specifying was also causing issues with the fetch request.
     return fetch(`http://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${apiKey}&units=${temperatureUnit}`)
         .then(response => response.json())
-}
+};
+
+/**
+ * This function calls the fetch function contained in the weatherServices class based on the
+ * city name searched for by a user. It returns a JSON object in String form, containing weather
+ * data for the searched city.
+ *
+ * @param longitude         Longitude of the city being searched for.
+ * @param latitude          Latitude of the city being searched for.
+ * @param temperatureUnit   Unit to display temperature in, either Metric or Imperial.
+ * @return {String}         The weather data as a String.
+ */
+export const findCityByLongitudeAndLatitude = (longitude, latitude, temperatureUnit) => {
+    return fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${temperatureUnit}`)
+        .then(response => response.json())
+};
 
 export default {
     findCityByName,
     findCityByNameAndState,
-    findCityByZipCode
+    findCityByZipCode,
+    findCityByLongitudeAndLatitude
 }
