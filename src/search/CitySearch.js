@@ -244,17 +244,55 @@ export default class CitySearch extends React.Component {
                          </h1>
                      </div>
 
-                     <div className="col-6 city-weather-right-column-no-color city-weather"> {/*Right column*/}
-                         <h1 className="text-responsive">
-                             {this.capitalize(this.state.cityWeather.weather[0].description)}
-                             {/*src is provided by Weather API. alt is provided by
-                             https://via.placeholder.com/50 --free placeholder images.*/}
-                         </h1>
-                         <h1>
-                             <img className="weather-image" src={`http://openweathermap.org/img/wn/${this.state.cityWeather.weather[0].icon}@2x.png`} alt={`https://via.placeholder.com/50`}/>
-                         </h1>
+                     {this.state.cityWeather.weather &&
+                      <div className="col-6 city-weather-right-column-no-color city-weather"> {/*Right column*/}
+                          {this.state.cityWeather.weather.map( (condition, index) =>
+                              <div className="row-cols-6" key={index}>
+                                  <h1 className="text-responsive">
+                                      {this.capitalize(condition.description)}
 
-                     </div>
+                                  </h1>
+                                  <h1>
+                                      {/*src is provided by Weather API. alt is provided by
+                                        https://via.placeholder.com/50 --free placeholder images.*/}
+                                      <img className="weather-image" src={`http://openweathermap.org/img/wn/${condition.icon}@2x.png`} alt={`https://via.placeholder.com/50`}/>
+                                  </h1>
+
+                              </div>
+                          )}
+                      </div>
+                     }
+
+                     {/*{this.state.cityWeather.weather &&*/}
+                     {/* this.state.cityWeather.weather.map( (condition, index) =>*/}
+                     {/*     <div key={index} className="col-6 city-weather-right-column-no-color city-weather"> /!*Right column*!/*/}
+                     {/*         <h1 className="text-responsive">*/}
+                     {/*             {this.capitalize(condition.description)}*/}
+                     {/*             /!*src is provided by Weather API. alt is provided by*/}
+                     {/*               https://via.placeholder.com/50 --free placeholder images.*!/*/}
+                     {/*         </h1>*/}
+                     {/*         <h1>*/}
+                     {/*             <img className="weather-image" src={`http://openweathermap.org/img/wn/${condition.icon}@2x.png`} alt={`https://via.placeholder.com/50`}/>*/}
+                     {/*         </h1>*/}
+                     {/*     </div>*/}
+
+                     {/*)}*/}
+
+
+                     {/*{this.state.cityWeather.weather &&*/}
+                     {/* <div className="col-6 city-weather-right-column-no-color city-weather"> /!*Right column*!/*/}
+                     {/*     <h1 className="text-responsive">*/}
+                     {/*         {this.capitalize(this.state.cityWeather.weather[0].description)}*/}
+                     {/*         /!*src is provided by Weather API. alt is provided by*/}
+                     {/*        https://via.placeholder.com/50 --free placeholder images.*!/*/}
+                     {/*     </h1>*/}
+                     {/*     <h1>*/}
+                     {/*         <img className="weather-image" src={`http://openweathermap.org/img/wn/${this.state.cityWeather.weather[0].icon}@2x.png`} alt={`https://via.placeholder.com/50`}/>*/}
+                     {/*     </h1>*/}
+
+                     {/* </div>*/}
+                     {/*}*/}
+
 
                      <div className="col-6 city-weather temperature-text text"> {/*Left column*/}
                          <h1 className="text-responsive">
