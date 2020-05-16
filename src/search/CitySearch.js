@@ -282,6 +282,8 @@ import React from "react";
 import {Link} from "react-router-dom";
 import './CitySearch.css'
 
+import WeatherServices from "../service/WeatherServices";
+
 /**
  * This class represents the search functionality of the Weather Checker web application. It will
  * accept search parameters such as city/state or zipcode and then make an API call to get the
@@ -366,11 +368,24 @@ export default class CitySearch extends React.Component {
      */
     search = () => {
         if(this.state.zipCode !== '') {
-            this.findCityByZipCode(this.state.zipCode);
+            // this.findCityByZipCode(this.state.zipCode);
+            WeatherServices.findCityByZipCode(this.state.zipCode, this.state.temperatureUnit)
+                .then(results => this.setState({
+                                               //TODO: change state using prevState.
+                                               cityWeather: results
+                                           }))
         } else if (this.state.cityName !== '' && this.state.stateName !== '') {
-            this.findCityByNameAndState(this.state.cityName, this.state.stateName);
+            WeatherServices.findCityByNameAndState(this.state.cityName, this.state.stateName, this.state.temperatureUnit)
+                .then(results => this.setState({
+                                               //TODO: change state using prevState.
+                                               cityWeather: results
+                                           }))
         } else if (this.state.cityName !== '' && this.state.stateName === '') {
-            this.findCityByName(this.state.cityName);
+            WeatherServices.findCityByName(this.state.cityName, this.state.temperatureUnit)
+                .then(results => this.setState({
+                                               //TODO: change state using prevState.
+                                               cityWeather: results,
+                                           }))
         } else {
             alert("You need to provide either a city name, city name and state name, or a zip code to search for weather results.")
         }
