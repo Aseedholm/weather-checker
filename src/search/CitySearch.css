@@ -40,9 +40,9 @@
 }
 
 .weather-image {
-    margin-top: -30px;
-    margin-bottom: -10px;
-    width: calc(80% + 1vw);
+    /*margin-top: -30px;*/
+    /*margin-bottom: -10px;*/
+    width: calc(80% + 1vw + 1vh);
     height: auto;
 }
 
