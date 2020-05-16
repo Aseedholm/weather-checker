@@ -1,5 +1,5 @@
 import React from "react";
-import {BrowserRouter, Route, Link} from "react-router-dom";
+import {BrowserRouter, Route} from "react-router-dom";
 import CitySearch from "../search/CitySearch";
 import PageHeader from "../page-header/PageHeader";
 import './RouterManager.css'
