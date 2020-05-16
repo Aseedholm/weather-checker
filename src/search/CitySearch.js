@@ -135,7 +135,7 @@ export default class CitySearch extends React.Component {
             WeatherServices.findCityByName(this.state.cityName, this.state.temperatureUnit)
                 .then(results => this.setState({
                                                //TODO: change state using prevState.
-                                               cityWeather: results,
+                                               cityWeather: results
                                            }))
         } else {
             alert("Please enter a valid input. Please provide either a [city name], "
@@ -227,25 +227,25 @@ export default class CitySearch extends React.Component {
                 cityWeather information is available.*/}
                 {this.state.searched && this.state.cityWeather && this.state.cityWeather.main &&
                  <div className="row city-weather-info">
-                     <div className="col-6 city-weather location-text text">
-                         <h1>
+                     <div className="col-6 city-weather location-text text"> {/*Left column*/}
+                         <h1 className="text-responsive">
                              Location:
                          </h1>
                      </div>
-                     <div className="col-6 city-weather-name city-weather">
-                         <h1>
+                     <div className="col-6 city-weather-name city-weather"> {/*Right column*/}
+                         <h1 className="text-responsive">
                              {this.state.cityWeather.name}
                          </h1>
                      </div>
 
-                     <div className="col-6 city-weather description-text text">
-                         <h1>
+                     <div className="col-6 city-weather description-text text"> {/*Left column*/}
+                         <h1 className="text-responsive">
                             Condition:
                          </h1>
                      </div>
 
-                     <div className="col-6 city-weather-description city-weather">
-                         <h1>
+                     <div className="col-6 city-weather-description city-weather"> {/*Right column*/}
+                         <h1 className="text-responsive">
                              {this.capitalize(this.state.cityWeather.weather[0].description)}
                              {/*src is provided by Weather API. alt is provided by
                              https://via.placeholder.com/50 --free placeholder images.*/}
@@ -255,52 +255,93 @@ export default class CitySearch extends React.Component {
 
                      </div>
 
-                     <div className="col-6 city-weather temperature-text text">
-                         <h1 >
+                     <div className="col-6 city-weather temperature-text text"> {/*Left column*/}
+                         <h1 className="text-responsive">
                              Temperature:
                          </h1>
 
                      </div>
 
-                     <div className="col-6 city-weather-current-temperature city-weather">
+                     <div className="col-6 city-weather city-weather-current-temperature"> {/*Right column*/}
 
-                         <h1>
-                             Current: {this.state.cityWeather.main.temp}&#176;
-                         </h1>
                      </div>
-                    <div className="col-6 city-weather">
+
+
+                    <div className="col-6 city-weather test-text">{/*Left column*/}
+                        <h1 className="text-responsive">
+                            Current:
+                        </h1>
                     </div>
-                     <div className="col-6 city-weather-feels-temperature city-weather">
-                         <h1>
-                             Feels Like: {this.state.cityWeather.main.feels_like}&#176;
+
+                     <div className="col-6 city-weather-current-temperature city-weather"> {/*Right column*/}
+
+                         <h1 className="text-responsive">
+                             {this.state.cityWeather.main.temp}&#176;
                          </h1>
                      </div>
-                     <div className="col-6 city-weather">
+
+                     <div className="col-6 city-weather test-text">{/*Left column*/}
+                         <h1 className="text-responsive">
+                             Feels:
+                         </h1>
                      </div>
-                     <div className="col-6 city-weather-temperature-max city-weather">
-                         <h1>
-                             Max: {this.state.cityWeather.main.temp_max}&#176;
+
+                     <div className="col-6 city-weather-feels-temperature city-weather"> {/*Right column*/}
+                         <h1 className="text-responsive">
+                             {this.state.cityWeather.main.feels_like}&#176;
+                         </h1>
+                     </div>
+                     <div className="col-6 city-weather test-text"> {/*Left column*/}
+                        <h1 className="text-responsive">
+                            Max:
+                        </h1>
+                     </div>
+                     <div className="col-6 city-weather-temperature-max city-weather"> {/*Right column*/}
+                         <h1 className="text-responsive">
+                             {this.state.cityWeather.main.temp_max}&#176;
 
                          </h1>
                      </div>
 
-                     <div className="col-6 city-weather">
-                     </div>
-                     <div className="col-6 city-weather-temperature-min city-weather">
-                         <h1>
-                             Min: {this.state.cityWeather.main.temp_min}&#176;
+                     <div className="col-6 city-weather test-text"> {/*Left column*/}
+                         <h1 className="text-responsive">
+                             Min:
                          </h1>
                      </div>
-                     <div className="col-6 city-weather text">
-                         <h1>
+                     <div className="col-6 city-weather-temperature-min city-weather"> {/*Right column*/}
+                         <h1 className="text-responsive">
+                             {this.state.cityWeather.main.temp_min}&#176;
+                         </h1>
+                     </div>
+                     <div className="col-6 city-weather text"> {/*Left column*/}
+                         <h1 className="text-responsive">
                              Humidity:
                          </h1>
                      </div>
-                     <div className="col-6 city-weather city-weather-humidity">
-                         <h1>
+                     <div className="col-6 city-weather city-weather-humidity"> {/*Right column*/}
+                         <h1 className="text-responsive">
                              {this.state.cityWeather.main.humidity}%
                          </h1>
                      </div>
+
+                     {/*Verify that clouds data is available.*/}
+                     {this.state.cityWeather.clouds &&
+                            <div className="col-6 city-weather text"> {/*Left column*/}
+                                <h1 className="text-responsive" >
+                                    Cloud Coverage:
+                                </h1>
+                            </div>
+
+                     }
+                     {this.state.cityWeather.clouds &&
+                      <div className="col-6 city-weather city-weather-clouds"> {/*Right column*/}
+                         <h1 className="text-responsive"> {/**/}
+                            {this.state.cityWeather.clouds.all}%
+                         </h1>
+                     </div>
+
+                     }
+
 
                  </div>
                 }
