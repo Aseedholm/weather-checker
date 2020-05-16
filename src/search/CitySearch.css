@@ -99,7 +99,10 @@
 
 .city-weather-humidity {
     justify-content: right;
+}
 
+.city-weather-clouds {
+    justify-content: right;
 }
 
 .city-weather-description-icon {
@@ -116,7 +119,21 @@
     background-color: #3E536B;
 }
 
+.test-text {
+    justify-content: flex-end;
 
+}
+
+.left-column-text {
+    word-break: break-all;
+}
+
+/*Found on
+https://bootstrapcreative.com/can-adjust-text-size-bootstrap-responsive-design/
+allows for responsive text size depending on viewport size.*/
+.text-responsive {
+    font-size: calc(85% + 1vw + 1vh);
+}
 
 
 
