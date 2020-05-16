@@ -1,10 +1,4 @@
-.city-search-page {
-    /*height: 100%;*/
-    /*width: 100%;*/
-    /*Don't believe hight/width are doing anything. Need to find way to get body to stretch 100%
-    TODO*/
-    /*border: 10px solid green;*/
-    background-color: #3E536B;
+.city-search-page.row {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,7 +6,13 @@
 }
 
 .search-bar-input-temp-unit-div.row {
+
     width: 100%;
+    margin-top: -10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #3E536B;
+
     justify-content: center;
     font-family: sans-serif;
 }
@@ -22,7 +22,7 @@
 
 }
 
-.search-bar {
+.search-bar.form-control {
     background-color: lightblue;
     border: none;
     margin-left: 3px;
@@ -36,54 +36,88 @@
 }
 
 .city-weather-info.row {
-    background-color: white;
+    /*background-color: white;*/
 
 }
 
+
+
 .city-weather {
+    color: grey;
+    /*background-color: #3E536B;*/
+    background-color: #253041;
     display: flex;
     justify-content: center;
     font-family: sans-serif;
+    /*background-color: white;*/
+}
+
+.weather-image {
+    /*background-color: yellow;*/
+    margin-top: -20px;
+    margin-bottom: -20px;
 }
 
 .city-weather-name {
+
     /*background-color: #3E536B;*/
+    justify-content: right;
 }
 
-.city-weather-description.col-12 {
-    background-color: #3E536B;
+.city-weather-description {
+
+    justify-content: right;
+
+}
+
+.city-weather-description {
+    /*margin-top: -10px;*/
 }
 
 .city-weather-current-temperature {
-    /*background-color: #3E536B;*/
+    justify-content: right;
+    background-color: #3E536B;
 
 }
 
 .city-weather-feels-temperature {
+    justify-content: right;
     background-color: #3E536B;
 }
 
 .city-weather-temperature-max {
-    /*background-color: #3E536B;*/
+    justify-content: right;
+    background-color: #3E536B;
 
 }
 
 .city-weather-temperature-min {
+    justify-content: right;
     background-color: #3E536B;
 
 }
 
 .city-weather-humidity {
-    /*background-color: #3E536B;*/
+    justify-content: right;
 
 }
 
 .city-weather-description-icon {
-    /*margin-top: -15px;*/
-    background-color: #3E536B;
     margin-top: -10px;
     margin-bottom: -20px;
 }
+
+.text {
+    left: 30px;
+    justify-content: left;
+}
+
+.temperature-text {
+    background-color: #3E536B;
+}
+
+
+
 
 
 

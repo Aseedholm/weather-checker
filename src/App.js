@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
-    <div className="application-body container-fluid">
+    <div className="application-body">
         <RouterManager/>
     </div>
 
