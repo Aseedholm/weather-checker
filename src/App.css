@@ -1,10 +1,15 @@
 .application-body {
-
+  /*width: 100%;*/
+  /*min-width: 100%;*/
+  /*min-height: 100%;*/
   /*min-height: 900px;*/
-  background-color: #253041;
+  /*background-color: #253041;*/
   /*border: 1px solid red;*/
   /*padding-bottom: auto;*/
 /*  padding not being used, commented out min-height to see if I can find a better strategy to get
 background color to fill 100% of page.
 TODO*/
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
+
