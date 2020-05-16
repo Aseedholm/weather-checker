@@ -2,24 +2,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /*padding-left: 18px; !* Prevents the text from appearing off screen to the left.*!*/
 }
 
 .search-bar-input-temp-unit-div.row {
-
     width: 100%;
     margin-top: -10px;
     padding-top: 5px;
     padding-bottom: 5px;
     background-color: #3E536B;
-
     justify-content: center;
     font-family: sans-serif;
 }
 
 .unit-select.custom-select {
     background-color: lightblue;
-
 }
 
 .search-bar.form-control {
@@ -35,75 +31,30 @@
 
 }
 
-.city-weather-info.row {
-    /*background-color: white;*/
-
-}
-
-
-
 .city-weather {
     color: grey;
-    /*background-color: #3E536B;*/
     background-color: #253041;
     display: flex;
     justify-content: center;
     font-family: sans-serif;
-    /*background-color: white;*/
 }
 
 .weather-image {
-    /*background-color: yellow;*/
-    margin-top: -20px;
-    margin-bottom: -20px;
+    margin-top: -30px;
+    margin-bottom: -10px;
+    width: calc(80% + 1vw);
+    height: auto;
 }
 
-.city-weather-name {
-
-    /*background-color: #3E536B;*/
+.city-weather-right-column-no-color {
     justify-content: right;
 }
 
-.city-weather-description {
-
-    justify-content: right;
-
-}
-
-.city-weather-description {
-    /*margin-top: -10px;*/
-}
-
-.city-weather-current-temperature {
-    justify-content: right;
-    background-color: #3E536B;
-
-}
-
-.city-weather-feels-temperature {
+.city-weather-right-column-color {
     justify-content: right;
     background-color: #3E536B;
 }
 
-.city-weather-temperature-max {
-    justify-content: right;
-    background-color: #3E536B;
-
-}
-
-.city-weather-temperature-min {
-    justify-content: right;
-    background-color: #3E536B;
-
-}
-
-.city-weather-humidity {
-    justify-content: right;
-}
-
-.city-weather-clouds {
-    justify-content: right;
-}
 
 .city-weather-description-icon {
     margin-top: -10px;
@@ -119,13 +70,8 @@
     background-color: #3E536B;
 }
 
-.test-text {
+.temperature-categories-text {
     justify-content: flex-end;
-
-}
-
-.left-column-text {
-    word-break: break-all;
 }
 
 /*Found on
@@ -133,7 +79,10 @@ https://bootstrapcreative.com/can-adjust-text-size-bootstrap-responsive-design/
 allows for responsive text size depending on viewport size.*/
 .text-responsive {
     font-size: calc(85% + 1vw + 1vh);
+
 }
+
+
 
 
 
