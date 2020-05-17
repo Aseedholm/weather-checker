@@ -64,3 +64,4 @@ You will also see any lint errors in the console.
 
 * [https://www.pluralsight.com/guides/how-to-use-geolocation-call-in-reactjs] and [https://www.youtube.com/watch?v=KytduDMW_7o] were used to understanding geolocation and how to implement it. 
 * [https://bootstrapcreative.com/can-adjust-text-size-bootstrap-responsive-design/] was used to understand how to design the program with text that adapts to screen size. 
+* [https://gist.github.com/PurpleBooth/109311bb0361f32d87a2] for the guide on how to write a README.md with nice formatting.

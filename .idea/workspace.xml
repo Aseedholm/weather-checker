@@ -4,13 +4,6 @@
     <list default="true" id="84597e55-749c-425d-a0c7-4897829d6a55" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/page-header/PageHeader.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/page-header/PageHeader.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/page-header/PageHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/page-header/PageHeader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/RouterManager.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/RouterManager.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/RouterManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/RouterManager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/search/CitySearch.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/CitySearch.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/search/CitySearch.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/CitySearch.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/WeatherServices.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/WeatherServices.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,12 +31,13 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../CS5200/Homework/A5MongoDB" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../CS5610/Homework/A4_V2/wbdv-sp20-aseedholm1-client-react" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\IntelliJ IDEA 2019.2.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -56,6 +50,16 @@
         </RuleState>
       </list>
     </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="test.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="test.js" working-dir="$PROJECT_DIR$/src">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.test.js" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -70,7 +74,7 @@
       <workItem from="1589473464953" duration="25616000" />
       <workItem from="1589549682086" duration="32172000" />
       <workItem from="1589641167189" duration="23210000" />
-      <workItem from="1589727613305" duration="4226000" />
+      <workItem from="1589727613305" duration="8788000" />
     </task>
     <servers />
   </component>
