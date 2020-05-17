@@ -2,7 +2,8 @@ import React from "react";
 import './PageHeader.css'
 
 /**
- * This function represents the top-banner for the Weather Checker website.
+ * This function represents the top-banner for the Weather Checker website. It contains the
+ * website's name and slogan.
  */
 const PageHeader = () =>
     <div className="top-banner">
@@ -13,6 +14,6 @@ const PageHeader = () =>
         <h4 className="message-top-banner">
             Check the Weather!
         </h4>
-    </div>
+    </div>;
 
 export default PageHeader

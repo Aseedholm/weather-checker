@@ -4,9 +4,9 @@ import './CitySearch.css'
 import WeatherServices from "../service/WeatherServices";
 
 /**
- * This class represents the search functionality of the Weather Checker web application. It will
- * accept search parameters such as city/state or zipcode and then make an API call to get the
- * weather results for the provided information.
+ * This class represents the search functionality/results of the Weather Checker web application.
+ * It will accept search parameters such as city/state or zip code and then make an API call to get
+ * the weather results for the provided information.
  */
 export default class CitySearch extends React.Component {
 
@@ -20,8 +20,6 @@ export default class CitySearch extends React.Component {
             stateName: '',
             //Search field works by itself
             zipCode: '',
-            //API key required by API for calls.
-            apiKey: 'fb71a69f93b29d7c3ad5ca6d0270914b',
             //Information for returned object.
             cityWeather: {},
             //Used to identify if something was searched.
@@ -44,10 +42,13 @@ export default class CitySearch extends React.Component {
             //Third parameter for getCurrentPosition
             //Can set age for how long data is kept for user.
             let options = {
-                enableHighAccuracy: true,
+                //If true will cause greater power/resource consumption. Don't need pinpoint accuracy.
+                enableHighAccuracy: false,
+                //maximum amount of time device can take prior to returning a position (in milliseconds).
                 timeout: 20000,
-                //minutes * hours * days.
-                maximumAge: 60 * 60 * 5
+                //maximumAge in milliseconds that geolocation information is kept.
+                //86400000 = 1 day in milliseconds.
+                maximumAge: 86400000
             };
             navigator.geolocation.getCurrentPosition(this.locationFound, this.locationNotFound, options);
             this.setState({
@@ -55,9 +56,6 @@ export default class CitySearch extends React.Component {
                           })
         } else {
             console.log("Not Available");
-            //If data was stored in a database, could call this.search() here and data would persist
-            //after refresh.
-            // this.search();
         }
     }
 
@@ -77,9 +75,10 @@ export default class CitySearch extends React.Component {
 
     /**
      * This function is called when navigator.geolocation.getCurrentPosition successfully finds a
-     * location
+     * location. It will then make a fetch request using WeatherService to get the weather
+     * information based on the longitude and latitude of the user.
      *
-     * @param position  Position information of the user.
+     * @param position  position information of the user.
      */
     locationFound = (position) => {
         WeatherServices.findCityByLongitudeAndLatitude(position.coords.longitude, position.coords.latitude, this.state.temperatureUnit)
@@ -103,9 +102,10 @@ export default class CitySearch extends React.Component {
     /**
      * This function accepts a string as an argument and will capitalize the first letter
      * of that string.
-     * @param {String} passedString the string to be capitalized.
      *
-     * @return {String} The passed string, but with the first letter capitalized.
+     * @param {String}  passedString    the string to be capitalized.
+     *
+     * @return {String}                 the passed string, but with the first letter capitalized.
      */
     capitalize = (passedString) => {
         let stringToReturn;
@@ -115,7 +115,11 @@ export default class CitySearch extends React.Component {
     };
 
     /**
-     * This function will search for a city based on the variables in the state.
+     * This function will search for a city based on the variables in the state. It will try to use
+     * zip code first, if no zip code has been provided it will see if city/state information has
+     * been provided. If city/state have no been provided, it will attempt to search based on just
+     * city. If no information has been provided and a search was attempted it will notify the user
+     * that valid information need to be provided via an alert message.
      */
     search = () => {
         if(this.state.zipCode !== '') {
@@ -139,7 +143,8 @@ export default class CitySearch extends React.Component {
                                            }))
         } else {
             alert("Please enter a valid input. Please provide either a [city name], "
-                  + "[city name, state name], or a [zip code] to search for weather results.")
+                  + "[city name, state name], or a [zip code] to search for weather results. Do not"
+                  + "include [] as part of the search.")
         }
     };
 
@@ -247,52 +252,21 @@ export default class CitySearch extends React.Component {
                      {this.state.cityWeather.weather &&
                       <div className="col-6 city-weather-right-column-no-color city-weather"> {/*Right column*/}
                           {this.state.cityWeather.weather.map( (condition, index) =>
-                              <div className="row-cols-6" key={index}>
-                                  <h1 className="text-responsive">
-                                      {this.capitalize(condition.description)}
 
-                                  </h1>
-                                  <h1>
-                                      {/*src is provided by Weather API. alt is provided by
-                                        https://via.placeholder.com/50 --free placeholder images.*/}
-                                      <img className="weather-image" src={`http://openweathermap.org/img/wn/${condition.icon}@2x.png`} alt={`https://via.placeholder.com/50`}/>
-                                  </h1>
+                              <div className="row-cols-6 condition-image-text" key={index}>
+                                      <h1 className="text-responsive condition-text ">
+                                          {this.capitalize(condition.description)}
+                                      </h1>
+                                      <h3>
+                                          {/*src is provided by Weather API. alt is provided by
+                                            https://via.placeholder.com/50 --free placeholder images.*/}
+                                          <img className="weather-image" src={`http://openweathermap.org/img/wn/${condition.icon}@2x.png`} alt={`https://via.placeholder.com/50`}/>
+                                      </h3>
 
                               </div>
                           )}
                       </div>
                      }
-
-                     {/*{this.state.cityWeather.weather &&*/}
-                     {/* this.state.cityWeather.weather.map( (condition, index) =>*/}
-                     {/*     <div key={index} className="col-6 city-weather-right-column-no-color city-weather"> /!*Right column*!/*/}
-                     {/*         <h1 className="text-responsive">*/}
-                     {/*             {this.capitalize(condition.description)}*/}
-                     {/*             /!*src is provided by Weather API. alt is provided by*/}
-                     {/*               https://via.placeholder.com/50 --free placeholder images.*!/*/}
-                     {/*         </h1>*/}
-                     {/*         <h1>*/}
-                     {/*             <img className="weather-image" src={`http://openweathermap.org/img/wn/${condition.icon}@2x.png`} alt={`https://via.placeholder.com/50`}/>*/}
-                     {/*         </h1>*/}
-                     {/*     </div>*/}
-
-                     {/*)}*/}
-
-
-                     {/*{this.state.cityWeather.weather &&*/}
-                     {/* <div className="col-6 city-weather-right-column-no-color city-weather"> /!*Right column*!/*/}
-                     {/*     <h1 className="text-responsive">*/}
-                     {/*         {this.capitalize(this.state.cityWeather.weather[0].description)}*/}
-                     {/*         /!*src is provided by Weather API. alt is provided by*/}
-                     {/*        https://via.placeholder.com/50 --free placeholder images.*!/*/}
-                     {/*     </h1>*/}
-                     {/*     <h1>*/}
-                     {/*         <img className="weather-image" src={`http://openweathermap.org/img/wn/${this.state.cityWeather.weather[0].icon}@2x.png`} alt={`https://via.placeholder.com/50`}/>*/}
-                     {/*     </h1>*/}
-
-                     {/* </div>*/}
-                     {/*}*/}
-
 
                      <div className="col-6 city-weather temperature-text text"> {/*Left column*/}
                          <h1 className="text-responsive">

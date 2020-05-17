@@ -10,7 +10,7 @@ import './RouterManager.css'
 export default class RouterManager extends React.Component {
     render() {
         return (
-            <div className="router-body">
+            <div>
                 <PageHeader/>
                 <BrowserRouter>
                     <Route

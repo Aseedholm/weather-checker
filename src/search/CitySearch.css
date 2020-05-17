@@ -40,11 +40,14 @@
 }
 
 .weather-image {
-    /*margin-top: -30px;*/
-    /*margin-bottom: -10px;*/
-    width: calc(80% + 1vw + 1vh);
+    margin-top: -30px;
+    margin-bottom: -20px;
+    width: calc(100% + 5vw + 2vh);
     height: auto;
+    /*background-color: yellow;*/
 }
+
+
 
 .city-weather-right-column-no-color {
     justify-content: right;
@@ -55,6 +58,10 @@
     background-color: #3E536B;
 }
 
+.condition-image-text {
+    margin-right: 5px;
+
+}
 
 .city-weather-description-icon {
     margin-top: -10px;
@@ -78,7 +85,7 @@
 https://bootstrapcreative.com/can-adjust-text-size-bootstrap-responsive-design/
 allows for responsive text size depending on viewport size.*/
 .text-responsive {
-    font-size: calc(85% + 1vw + 1vh);
+    font-size: calc(80% + 1vw + 1vh);
 
 }
 
