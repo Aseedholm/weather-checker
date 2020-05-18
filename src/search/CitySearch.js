@@ -126,19 +126,16 @@ export default class CitySearch extends React.Component {
             // this.findCityByZipCode(this.state.zipCode);
             WeatherServices.findCityByZipCode(this.state.zipCode, this.state.temperatureUnit)
                 .then(results => this.setState({
-                                               //TODO: change state using prevState.
                                                cityWeather: results
                                            }))
         } else if (this.state.cityName !== '' && this.state.stateName !== '') {
             WeatherServices.findCityByNameAndState(this.state.cityName, this.state.stateName, this.state.temperatureUnit)
                 .then(results => this.setState({
-                                               //TODO: change state using prevState.
                                                cityWeather: results
                                            }))
         } else if (this.state.cityName !== '' && this.state.stateName === '') {
             WeatherServices.findCityByName(this.state.cityName, this.state.temperatureUnit)
                 .then(results => this.setState({
-                                               //TODO: change state using prevState.
                                                cityWeather: results
                                            }))
         } else {
@@ -168,7 +165,6 @@ export default class CitySearch extends React.Component {
                     <input type="text"
                            placeholder="City Name, State or Zip Code"
                            className="search-bar col-sm-6 col-6 form-control"
-                        //TODO change setState to use prevState.
                            onChange={(e) => {
                                //will be used to determine if input is characters or digits.
                                let numberRegex = /^[0-9]+$/;
